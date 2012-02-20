@@ -28,7 +28,7 @@ pkg
 #
 # For MacOS:
 #
-#.DS_Store
+.DS_Store
 
 # For TextMate
 #*.tmproj
@@ -43,7 +43,9 @@ pkg
 #*.swp
 
 # For redcar:
-#.redcar
+.redcar
 
 # For rubinius:
 #*.rbc
+
+nbproject
