@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "embedify"
   gem.homepage = "http://github.com/parasquid/embedify"
-  gem.license = "GPL3"
+  gem.license = "LGPLv3"
   gem.summary = %Q{parses and returns an embeddable version of a page}
   gem.description = %Q{Embedify is a ruby gem that parses and returns an
     embeddable version of a page, similar to how Facebook fetches and retrieves
