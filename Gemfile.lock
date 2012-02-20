@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/parasquid/opengraph.git
-  revision: 0b16cd4334ab28defa8e4c8701219fd71f7420b7
+  revision: f750abbdb50d36f32e2b390cfec58a76d23ede49
   specs:
     opengraph (0.0.4)
       hashie
