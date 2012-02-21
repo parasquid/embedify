@@ -13,7 +13,7 @@ group :development do
   gem 'rspec'
 end
 
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.5.0'
 gem 'httparty'
 gem 'opengraph', git: 'git://github.com/parasquid/opengraph.git'
 #gem 'opengraph', path: '../opengraph'

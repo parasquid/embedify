@@ -1,3 +1,5 @@
+$:.unshift(File.expand_path(File.dirname(__FILE__))) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+
 require 'nokogiri'
 require 'httparty'
 require 'opengraph'
@@ -20,6 +22,11 @@ module Embedify
         self.send(attribute.to_sym, opengraph)
       end
     end
+
+    # fill in extra attributes
+    unless opengraph.include? 'description'
+      self.description(opengraph)
+    end
     opengraph
   end
 
@@ -35,6 +42,17 @@ module Embedify
 
   def self.image(document)
     puts "image"
+  end
+
+  def self.description(document)
+    meta_tags = document[:nokogiri_parsed_document].css('meta')
+    meta_tags.each do |meta_tag|
+      if meta_tag.attribute('name').to_s.match(/^description$/i)
+        document['description'] = meta_tag.attribute('content').to_s
+        return
+      end
+    end
+    document['description'] = ''
   end
 
 end
