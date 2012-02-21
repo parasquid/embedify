@@ -52,6 +52,8 @@ module Embedify
         return
       end
     end
+
+    # TODO: make the description be the first few words of the first <p></p>
     document['description'] = ''
   end
 
