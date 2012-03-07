@@ -1,0 +1,56 @@
+GIT
+  remote: git://github.com/parasquid/embedify.git
+  revision: 419b8f4d84975bfcb69e7b3804ab8135e8a585e7
+  specs:
+    embedify (0.2.0)
+      httparty
+      nokogiri
+      opengraph
+
+GIT
+  remote: git://github.com/parasquid/opengraph.git
+  revision: dbcfc27a40be6b4681bfd55c31b767ecf685ff96
+  specs:
+    opengraph (0.0.4)
+      hashie
+      httparty
+      httparty (~> 0.8.1)
+      nokogiri
+      nokogiri (~> 1.5.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    daemons (1.1.8)
+    eventmachine (0.12.10)
+    hashie (1.2.0)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
+    multi_json (1.1.0)
+    multi_xml (0.4.1)
+    nokogiri (1.5.0)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    shotgun (0.9)
+      rack (>= 1.0)
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    thin (1.3.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  embedify!
+  opengraph!
+  shotgun
+  sinatra
+  thin

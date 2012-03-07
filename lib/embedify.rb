@@ -33,14 +33,16 @@ module Embedify
   private
 
   def self.title(document)
-    document['title'] = document[:nokogiri_parsed_document].css('title').first.inner_text
+    document['title'] ||= document[:nokogiri_parsed_document].css('title').first.inner_text
   end
 
   def self.type(document)
-    document['type'] = 'website'
+    document['type'] ||= 'website'
   end
 
   def self.image(document)
+    # TODO: loop through all images and bring back up to 30 good candidates
+    # Good candidates: at least 50x50, max aspect ratio of 3:1, png/jpeg/gif format
     puts "image"
   end
 
