@@ -34,7 +34,7 @@ class EmbedifyServer < Sinatra::Base
       'Access-Control-Allow-Methods' => '*',
       'Access-Control-Allow-Headers' => '*'
     content_type 'application/json'
-    jsonp properties.to_json, params[:callback]
+    jsonp properties.to_json, params[:callback] || :callback
   end
 
   # start the server if ruby file executed directly
