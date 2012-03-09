@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tristan Gomez"]
-  s.date = "2012-02-20"
+  s.date = "2012-03-09"
   s.description = "Embedify is a ruby gem that parses and returns an\n    embeddable version of a page, similar to how Facebook fetches and retrieves\n    page data when posting a link."
   s.email = "tristan.gomez+embedify@gmail.com"
   s.extra_rdoc_files = [
@@ -26,6 +26,12 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "embedify.gemspec",
+    "examples/embedify_server/Gemfile",
+    "examples/embedify_server/Gemfile.lock",
+    "examples/embedify_server/Rakefile",
+    "examples/embedify_server/config.ru",
+    "examples/embedify_server/lib/embedify_server.rb",
+    "examples/embedify_server/lib/views/index.erb",
     "lib/embedify.rb",
     "test/helper.rb",
     "test/test_embedify.rb"
@@ -40,18 +46,16 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<nokogiri>, [">= 0"])
-      s.add_runtime_dependency(%q<httparty>, [">= 0"])
-      s.add_runtime_dependency(%q<opengraph>, [">= 0"])
+      s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5.0"])
+      s.add_runtime_dependency(%q<faraday>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
     else
-      s.add_dependency(%q<nokogiri>, [">= 0"])
-      s.add_dependency(%q<httparty>, [">= 0"])
-      s.add_dependency(%q<opengraph>, [">= 0"])
+      s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
+      s.add_dependency(%q<faraday>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -59,9 +63,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
-    s.add_dependency(%q<nokogiri>, [">= 0"])
-    s.add_dependency(%q<httparty>, [">= 0"])
-    s.add_dependency(%q<opengraph>, [">= 0"])
+    s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
+    s.add_dependency(%q<faraday>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])

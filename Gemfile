@@ -14,4 +14,4 @@ group :development do
 end
 
 gem 'nokogiri', '~> 1.5.0'
-gem 'httparty'
+gem 'faraday'
