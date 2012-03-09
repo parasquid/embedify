@@ -1,7 +1,10 @@
 source "http://rubygems.org"
 
 gem 'sinatra'
-gem 'embedify', git: 'git://github.com/parasquid/embedify.git'
+gem 'embedify', path: '../../'
 gem 'shotgun'
 gem 'thin'
 gem 'sinatra-jsonp', :require => 'sinatra/jsonp'
+gem 'em-synchrony'
+gem 'em-http-request'
+gem 'sinatra-synchrony'

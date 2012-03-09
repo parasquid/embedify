@@ -1,37 +1,37 @@
-GIT
-  remote: git://github.com/parasquid/embedify.git
-  revision: 419b8f4d84975bfcb69e7b3804ab8135e8a585e7
+PATH
+  remote: ../../
   specs:
-    embedify (0.2.0)
-      httparty
-      nokogiri
-      opengraph
-
-GIT
-  remote: git://github.com/parasquid/opengraph.git
-  revision: dbcfc27a40be6b4681bfd55c31b767ecf685ff96
-  specs:
-    opengraph (0.0.4)
-      hashie
-      httparty
-      httparty (~> 0.8.1)
-      nokogiri
+    embedify (0.3.0)
+      em-http-request
+      em-synchrony
+      faraday
       nokogiri (~> 1.5.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.7)
+    async-rack (0.5.1)
+      rack (~> 1.1)
     daemons (1.1.8)
+    em-http-request (0.3.0)
+      addressable (>= 2.0.0)
+      escape_utils
+      eventmachine (>= 0.12.9)
+    em-resolv-replace (1.1.2)
+    em-synchrony (0.2.0)
+      eventmachine (>= 0.12.9)
+    escape_utils (0.2.4)
     eventmachine (0.12.10)
-    hashie (1.2.0)
-    httparty (0.8.1)
-      multi_json
-      multi_xml
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     json_pure (1.6.5)
-    multi_json (1.1.0)
-    multi_xml (0.4.1)
-    nokogiri (1.5.0)
+    multipart-post (1.1.5)
+    nokogiri (1.5.1)
     rack (1.4.1)
+    rack-fiber_pool (0.9.1)
     rack-protection (1.2.0)
       rack
     shotgun (0.9)
@@ -43,6 +43,13 @@ GEM
     sinatra-jsonp (0.3.2)
       json_pure (~> 1.4)
       sinatra (~> 1.0)
+    sinatra-synchrony (0.1.1)
+      async-rack
+      em-http-request (= 0.3.0)
+      em-resolv-replace
+      em-synchrony (= 0.2.0)
+      rack-fiber_pool (= 0.9.1)
+      sinatra (>= 1.0)
     thin (1.3.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -53,9 +60,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  em-http-request
+  em-synchrony
   embedify!
-  opengraph!
   shotgun
   sinatra
   sinatra-jsonp
+  sinatra-synchrony
   thin

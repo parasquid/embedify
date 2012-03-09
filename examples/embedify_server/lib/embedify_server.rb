@@ -1,14 +1,20 @@
+$LOAD_PATH << File.expand_path('../../lib')
+
 require 'sinatra/base'
+require 'sinatra/synchrony'
 require "sinatra/jsonp"
 require 'json'
 require 'cgi'
-
-$LOAD_PATH << File.expand_path('../../lib')
-
+require 'em-synchrony'
+require 'em-synchrony/em-http'
 require 'embedify'
-require 'sinatra/jsonp'
+
+Faraday.default_adapter = :em_synchrony
 
 class EmbedifyServer < Sinatra::Base
+
+  register Sinatra::Synchrony
+
   helpers Sinatra::Jsonp
   enable :sessions
   set :session_secret, "My session secret"
