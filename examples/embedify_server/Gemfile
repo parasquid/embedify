@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem 'sinatra'
-gem 'opengraph', git: 'git://github.com/parasquid/opengraph.git'
 gem 'embedify', git: 'git://github.com/parasquid/embedify.git'
 gem 'shotgun'
 gem 'thin'
+gem 'sinatra-jsonp', :require => 'sinatra/jsonp'
