@@ -71,7 +71,11 @@ module Embedify
     end
 
     p_tags = document[:nokogiri_parsed_document].css('p')
-    document['description'] = p_tags.first.inner_text.to_s
+    if p_tags.count > 0
+      document['description'] = p_tags.first.inner_text.to_s
+    else
+      document['description'] = ''
+    end
   end
 
 
