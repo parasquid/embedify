@@ -70,8 +70,8 @@ module Embedify
       end
     end
 
-    # TODO: make the description be the first few words of the first <p></p>
-    document['description'] = ''
+    p_tags = document[:nokogiri_parsed_document].css('p')
+    document['description'] = p_tags.first.inner_text.to_s
   end
 
 
