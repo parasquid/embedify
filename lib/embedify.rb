@@ -10,7 +10,7 @@ module Embedify
     opengraph = begin
       html = Faraday.get(uri)
       page = parse(html.body)
-      page['url'] = html.request.last_uri.to_s unless page.include? 'url'
+      page['url'] = uri unless page.include? 'url'
       page
     rescue Exception => e
       raise e
