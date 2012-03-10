@@ -8,9 +8,9 @@ module Embedify
   # HTTP GET request and returns an OpenGraph::Object
   def self.fetch(uri, options = {})
     opengraph = begin
-      html = Faraday.get(uri)
+      html = get_with_redirects(uri)
       page = parse(html.body)
-      page['url'] = uri unless page.include? 'url'
+      page['url'] = html.env[:url].to_s unless page.include? 'url'
       page
     rescue Exception => e
       raise e
@@ -35,6 +35,18 @@ module Embedify
 
   private
 
+  def self.get_with_redirects(uri, iterations = 0)
+    html = Faraday.get(uri)
+    #raise html.env[:response_headers]['Location']
+    puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
+    case html.status
+    when  301..307
+      html = get_with_redirects(html.env[:response_headers]['Location'], iterations + 1)
+    else
+      html
+    end
+  end
+
   def self.parse(html)
     doc = Nokogiri::HTML.parse(html)
     page = Embedify::Object.new
@@ -48,7 +60,14 @@ module Embedify
   end
 
   def self.title(document)
-    document['title'] ||= document[:nokogiri_parsed_document].css('title').first.inner_text
+    unless document['title']
+      title_tags = document[:nokogiri_parsed_document].css('title')
+      if title_tags.count > 0
+        document['title'] = title_tags.first.inner_text
+      else
+        document.delete 'title'
+      end
+    end
   end
 
   def self.type(document)
@@ -74,7 +93,7 @@ module Embedify
     if p_tags.count > 0
       document['description'] = p_tags.first.inner_text.to_s
     else
-      document['description'] = ''
+      document.delete 'description'
     end
   end
 

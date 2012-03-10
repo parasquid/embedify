@@ -9,9 +9,11 @@ group :development do
   gem "shoulda", ">= 0"
   gem "rdoc", "~> 3.12"
   gem "bundler", "~> 1.0.0"
-  gem "jeweler", "~> 1.8.3"
+  gem "jeweler"
   gem 'rspec'
 end
 
 gem 'nokogiri', '~> 1.5.0'
+gem 'hashie'
 gem 'faraday'
+gem 'faraday_middleware'
