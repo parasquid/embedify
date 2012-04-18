@@ -9,6 +9,7 @@ GEM
       rack (~> 1.1)
     faraday_middleware (0.8.4)
       faraday (>= 0.7.4, < 0.9)
+    fastimage (1.2.13)
     git (1.2.5)
     hashie (1.2.0)
     jeweler (1.8.3)
@@ -41,9 +42,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0.0)
+  addressable
+  bundler
   faraday
   faraday_middleware
+  fastimage
   hashie
   jeweler
   nokogiri (~> 1.5.0)

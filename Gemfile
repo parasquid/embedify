@@ -8,7 +8,7 @@ source "http://rubygems.org"
 group :development do
   gem "shoulda", ">= 0"
   gem "rdoc", "~> 3.12"
-  gem "bundler", "~> 1.0.0"
+  gem "bundler"
   gem "jeweler"
   gem 'rspec'
 end
@@ -18,3 +18,5 @@ gem 'hashie'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'hashie'
+gem 'addressable'
+gem 'fastimage'
