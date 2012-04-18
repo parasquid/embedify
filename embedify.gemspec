@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tristan Gomez"]
-  s.date = "2012-03-09"
+  s.date = "2012-04-18"
   s.description = "Embedify is a ruby gem that parses and returns an\n    embeddable version of a page, similar to how Facebook fetches and retrieves\n    page data when posting a link."
   s.email = "tristan.gomez+embedify@gmail.com"
   s.extra_rdoc_files = [
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/parasquid/embedify"
   s.licenses = ["LGPLv3"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.22"
   s.summary = "parses and returns an embeddable version of a page"
 
   if s.respond_to? :specification_version then
@@ -47,28 +47,37 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5.0"])
+      s.add_runtime_dependency(%q<hashie>, [">= 0"])
       s.add_runtime_dependency(%q<faraday>, [">= 0"])
+      s.add_runtime_dependency(%q<faraday_middleware>, [">= 0"])
+      s.add_runtime_dependency(%q<hashie>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
     else
       s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
+      s.add_dependency(%q<hashie>, [">= 0"])
       s.add_dependency(%q<faraday>, [">= 0"])
+      s.add_dependency(%q<faraday_middleware>, [">= 0"])
+      s.add_dependency(%q<hashie>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
     s.add_dependency(%q<nokogiri>, ["~> 1.5.0"])
+    s.add_dependency(%q<hashie>, [">= 0"])
     s.add_dependency(%q<faraday>, [">= 0"])
+    s.add_dependency(%q<faraday_middleware>, [">= 0"])
+    s.add_dependency(%q<hashie>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
