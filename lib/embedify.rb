@@ -38,7 +38,7 @@ module Embedify
   def self.get_with_redirects(uri, iterations = 0)
     html = Faraday.get(uri)
     #raise html.env[:response_headers]['Location']
-    puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
+    #puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
     case html.status
     when  301..307
       html = get_with_redirects(html.env[:response_headers]['Location'], iterations + 1)
@@ -50,11 +50,17 @@ module Embedify
   def self.parse(html)
     doc = Nokogiri::HTML.parse(html)
     page = Embedify::Object.new
+    
+    # capture all og: meta tags
     doc.css('meta').each do |m|
       if m.attribute('property') && m.attribute('property').to_s.match(/^og:(.+)$/i)
         page[$1.gsub('-','_')] = m.attribute('content').to_s
       end
     end
+    
+    # transform the og:image tag into an array
+    page.image = [url: page.image] unless(page.image.nil? || page.image.respond_to?(:each))
+    
     page[:nokogiri_parsed_document] = doc
     page
   end
