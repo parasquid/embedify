@@ -11,7 +11,7 @@ module Embedify
   def self.fetch(uri, options = {})
     opengraph = begin
       html = get_with_redirects(uri)
-      page = parse(html.body)
+      page = parse(html)
       page['url'] = html.env[:url].to_s unless page.include? 'url'
       page
     rescue Exception => e
@@ -49,7 +49,7 @@ module Embedify
   end
 
   def self.parse(html)
-    doc = Nokogiri::HTML.parse(html)
+    doc = Nokogiri::HTML.parse(html.body)
     page = Embedify::Object.new
     
     # capture all og: meta tags
