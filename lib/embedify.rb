@@ -39,7 +39,6 @@ module Embedify
 
   def self.get_with_redirects(uri, iterations = 0)
     html = Faraday.get(uri)
-    #raise html.env[:response_headers]['Location']
     #puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
     case html.status
     when  301..307
@@ -61,8 +60,11 @@ module Embedify
     end
     
     # transform the og:image tag into an array
-    page.image = [url: page.image] unless(page.image.nil? || page.image.respond_to?(:each))
-    
+    unless page.image.nil? || page.image.respond_to?(:each)
+      page.image = make_absolute(page.image, page.url || html.env[:url].to_s)
+      dimensions = FastImage.size(page.image)
+      page.image = [url: page.image, width: dimensions[0], height: dimensions[1]]
+    end
     page[:nokogiri_parsed_document] = doc
     page
   end
@@ -93,15 +95,15 @@ module Embedify
       img_srcs.each do |img_src|
         dimensions = FastImage.size(img_src)
         #puts "#{img_src} #{dimensions.to_s}"
-        document.image.add(url: img_src) if image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions)
+        document.image.add(url: img_src, width: dimensions[0], height: dimensions[1]) if image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions)
         img_src_count = img_src_count + 1
         return if(img_src_count > 10)
       end
     end
   end
   
-  def self.make_absolute( href, root )
-    URI.parse(root).merge(URI.parse(href)).to_s
+  def self.make_absolute(href, root)
+    Addressable::URI.parse(root).merge(Addressable::URI.parse(href)).to_s
   end
 
   def self.image_is_big_enough?(dimensions)
