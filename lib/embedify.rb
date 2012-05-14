@@ -90,20 +90,20 @@ module Embedify
       img_srcs.add(make_absolute(img_tag.attribute('src'), document['url']))
     end
     if img_srcs.count > 0
-      document.image = Set.new
+      images = []
       img_src_count = 1
       img_srcs.each do |img_src|
         dimensions = FastImage.size(img_src)
-        #puts "#{img_src} #{dimensions.to_s}"
-        document.image.add(url: img_src, width: dimensions[0], height: dimensions[1]) if image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions)
+        images.push(url: img_src, width: dimensions[0], height: dimensions[1]) if image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions)
         img_src_count = img_src_count + 1
-        return if(img_src_count > 10)
+        break if(img_src_count > 10)
       end
+      document.image = images
     end
   end
   
   def self.make_absolute(href, root)
-    Addressable::URI.parse(root).merge(Addressable::URI.parse(href)).to_s
+    URI.parse(root).merge(URI.parse(href)).to_s
   end
 
   def self.image_is_big_enough?(dimensions)
