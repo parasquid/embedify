@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "embedify"
-  s.version = "0.5.0"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tristan Gomez"]
-  s.date = "2012-04-18"
+  s.date = "2012-05-14"
   s.description = "Embedify is a ruby gem that parses and returns an\n    embeddable version of a page, similar to how Facebook fetches and retrieves\n    page data when posting a link."
   s.email = "tristan.gomez+embedify@gmail.com"
   s.extra_rdoc_files = [
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/parasquid/embedify"
   s.licenses = ["LGPLv3"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.22"
+  s.rubygems_version = "1.8.15"
   s.summary = "parses and returns an embeddable version of a page"
 
   if s.respond_to? :specification_version then
