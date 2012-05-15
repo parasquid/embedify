@@ -97,7 +97,8 @@ module Embedify
       img_src_count = 1
       img_srcs.each do |img_src|
         dimensions = FastImage.size(img_src)
-        images.push(url: img_src, width: dimensions[0], height: dimensions[1]) if image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions)
+        images.push(url: img_src, width: dimensions[0], height: dimensions[1]) if(image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions))
+        puts "#{img_src} #{dimensions}"
         img_src_count = img_src_count + 1
         break if(img_src_count > 10)
       end
@@ -117,8 +118,8 @@ module Embedify
   
   def self.image_has_good_proportions?(dimensions)
     return false if dimensions.nil?
-    # max aspect ratio of 3:1 (one dimension is not more than 3x the other - too narrow/wide in that case)
-    (dimensions[0] * 3 >= dimensions[1]) && (dimensions[1] * 3 >= dimensions[0])
+    # max aspect ratio of 4:1 (one dimension is not more than 4x the other - too narrow/wide in that case)
+    (dimensions[0] * 4 >= dimensions[1]) && (dimensions[1] * 4 >= dimensions[0])
   end
 
   def self.description(document)
