@@ -9,6 +9,8 @@ module Embedify
   # Fetch Open Graph data from the specified URI. Makes an
   # HTTP GET request and returns an OpenGraph::Object
   def self.fetch(uri, options = {})
+    # TODO: use the options hash
+    # by default: do not load images    
     opengraph = begin
       html = get_with_redirects(uri)
       page = parse(html)
@@ -20,6 +22,7 @@ module Embedify
 
     # check if the opengraph object is complete
     unless opengraph.valid?
+      # TODO: break this out (call each attribute directly)
       # the opengraph object is lacking some mandatory attributes
       attributes = Embedify::Object::MANDATORY_ATTRIBUTES
       attributes.delete 'url'
