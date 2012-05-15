@@ -39,7 +39,7 @@ module Embedify
 
   def self.get_with_redirects(uri, iterations = 0)
     html = Faraday.get(uri)
-    #puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
+    puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
     case html.status
     when  301..307
       html = get_with_redirects(html.env[:response_headers]['Location'], iterations + 1)
@@ -98,7 +98,7 @@ module Embedify
         img_src_count = img_src_count + 1
         break if(img_src_count > 10)
       end
-      document.image = images
+      document.image = images.sort { |x, y| x[:width] * x[:height] <=> x[:width] * x[:height] }
     end
   end
   
