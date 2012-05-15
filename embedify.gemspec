@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "embedify"
-  s.version = "0.6.2"
+  s.version = "0.6.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tristan Gomez"]
-  s.date = "2012-05-14"
+  s.date = "2012-05-15"
   s.description = "Embedify is a ruby gem that parses and returns an\n    embeddable version of a page, similar to how Facebook fetches and retrieves\n    page data when posting a link."
   s.email = "tristan.gomez+embedify@gmail.com"
   s.extra_rdoc_files = [
