@@ -1,8 +1,13 @@
 PATH
   remote: ../../
   specs:
-    embedify (0.3.0)
+    embedify (0.6.4)
+      addressable
       faraday
+      faraday_middleware
+      fastimage
+      hashie
+      hashie
       nokogiri (~> 1.5.0)
 
 GEM
@@ -21,13 +26,15 @@ GEM
       eventmachine (>= 0.12.9)
     escape_utils (0.2.4)
     eventmachine (0.12.10)
-    faraday (0.7.6)
-      addressable (~> 2.2)
+    faraday (0.8.1)
       multipart-post (~> 1.1)
-      rack (~> 1.1)
+    faraday_middleware (0.8.7)
+      faraday (>= 0.7.4, < 0.9)
+    fastimage (1.2.13)
+    hashie (1.2.0)
     json_pure (1.6.5)
     multipart-post (1.1.5)
-    nokogiri (1.5.2)
+    nokogiri (1.5.3)
     rack (1.4.1)
     rack-fiber_pool (0.9.1)
     rack-protection (1.2.0)

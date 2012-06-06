@@ -3,6 +3,7 @@ require 'faraday'
 require 'hashie'
 require "addressable/uri"
 require 'fastimage'
+require 'cgi'
 
 module Embedify
 
@@ -42,7 +43,7 @@ module Embedify
 
   def self.get_with_redirects(uri, iterations = 0)
     html = Faraday.get(uri)
-    puts "#{iterations.inspect} #{html.env[:response_headers]['Location']}"
+    puts "#{iterations.inspect} redirects #{html.env[:response_headers]['Location']}"
     case html.status
     when  301..307
       html = get_with_redirects(html.env[:response_headers]['Location'], iterations + 1)
@@ -96,7 +97,7 @@ module Embedify
       images = []
       img_src_count = 1
       img_srcs.each do |img_src|
-        dimensions = FastImage.size(img_src)
+        dimensions = FastImage.size(CGI::escape(img_src))
         images.push(url: img_src, width: dimensions[0], height: dimensions[1]) if(image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions))
         puts "#{img_src} #{dimensions}"
         img_src_count = img_src_count + 1

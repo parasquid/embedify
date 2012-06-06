@@ -27,7 +27,7 @@ class EmbedifyServer < Sinatra::Base
   get_or_post '/' do
     puts "processing #{params[:url]}"
 
-    properties = Embedify.fetch(CGI.unescapeHTML(params[:url]))
+    properties = Embedify.fetch(CGI::escape(params[:url]))
 
     # we don't want to return the nokogiri doc
     properties.delete :nokogiri_parsed_document
