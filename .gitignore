@@ -49,3 +49,6 @@ pkg
 #*.rbc
 
 nbproject
+
+examples/embedify_server/log/
+
