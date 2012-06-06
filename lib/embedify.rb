@@ -4,6 +4,7 @@ require 'hashie'
 require "addressable/uri"
 require 'fastimage'
 require 'cgi'
+require 'pp'
 
 module Embedify
 
@@ -91,7 +92,7 @@ module Embedify
   def self.image(document)
     img_srcs = Set.new
     document[:nokogiri_parsed_document].css('img').each do |img_tag|
-      img_srcs.add(make_absolute(CGI::escape(img_tag.attribute('src')), document['url']))
+      img_srcs.add(make_absolute(img_tag.attribute('src'), document['url']))
     end
     if img_srcs.count > 0
       images = []
@@ -108,6 +109,7 @@ module Embedify
   end
   
   def self.make_absolute(href, root)
+    puts "#{root} #{href}"
     URI.parse(root).merge(URI.parse(href)).to_s
   end
 
