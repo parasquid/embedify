@@ -91,13 +91,13 @@ module Embedify
   def self.image(document)
     img_srcs = Set.new
     document[:nokogiri_parsed_document].css('img').each do |img_tag|
-      img_srcs.add(make_absolute(img_tag.attribute('src'), document['url']))
+      img_srcs.add(make_absolute(CGI::escape(img_tag.attribute('src')), document['url']))
     end
     if img_srcs.count > 0
       images = []
       img_src_count = 1
       img_srcs.each do |img_src|
-        dimensions = FastImage.size(CGI::escape(img_src))
+        dimensions = FastImage.size(img_src)
         images.push(url: img_src, width: dimensions[0], height: dimensions[1]) if(image_is_big_enough?(dimensions) && image_has_good_proportions?(dimensions))
         puts "#{img_src} #{dimensions}"
         img_src_count = img_src_count + 1
