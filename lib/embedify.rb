@@ -110,7 +110,7 @@ module Embedify
   
   def self.make_absolute(href, root)
     puts "#{root} #{href}"
-    URI.parse(root).merge(URI.parse(href)).to_s
+    URI.parse(root).merge(URI.parse(Addressable::URI.encode(href))).to_s
   end
 
   def self.image_is_big_enough?(dimensions)
